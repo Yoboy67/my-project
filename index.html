@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luca Enterprise — Official Corporate Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f4f0;
+      color: #1a1a1a;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .le-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Header */
+    .le-header {
+      border-bottom: 3px double #1a1a1a;
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .le-logo-box {
+      border: 2px solid #1a1a1a;
+      padding: 0.5rem 1.4rem;
+      display: inline-block;
+    }
+
+    .le-logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .le-sub {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .le-ticker {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #666;
+      border: 1px solid #ccc;
+      padding: 4px 10px;
+      margin-top: 0.5rem;
+      letter-spacing: 1px;
+      background: #fff;
+    }
+
+    /* Nav */
+    .le-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .le-nav a {
+      color: #1a1a1a;
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .le-nav a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .le-hero {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border: 1px solid #ccc;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .le-hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .le-hero-sub {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .le-hero-stamp {
+      display: inline-block;
+      border: 3px solid #a32d2d;
+      padding: 6px 18px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+      margin-top: 0.5rem;
+      color: #a32d2d;
+      font-weight: 700;
+    }
+
+    .le-glitch {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 9px;
+      color: #999;
+      opacity: 0.4;
+    }
+
+    /* Sections */
+    .le-section { margin-bottom: 2.5rem; }
+
+    .le-section-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #888;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Metric cards */
+    .le-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .le-card {
+      border: 1px solid #ddd;
+      padding: 1rem 1.2rem;
+      background: #fff;
+    }
+
+    .le-card-num {
+      font-size: 30px;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+    }
+
+    .le-card-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.2rem;
+    }
+
+    .le-card-note {
+      font-size: 10px;
+      color: #aaa;
+      font-style: italic;
+      margin-top: 0.4rem;
+    }
+
+    /* Legal blocks */
+    .le-legal-block {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1.2rem 1.4rem;
+      font-size: 11.5px;
+      line-height: 1.9;
+      color: #555;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 1rem;
+    }
+
+    .le-legal-block strong {
+      color: #1a1a1a;
+      font-family: 'Times New Roman', serif;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .le-legal-block em {
+      color: #1a1a1a;
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    /* Warning */
+    .le-warning {
+      border: 1px solid #a32d2d;
+      padding: 0.8rem 1rem;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: #a32d2d;
+      margin: 1rem 0;
+      line-height: 1.7;
+    }
+
+    .le-warning::before {
+      content: "! WARNING:  ";
+      font-weight: bold;
+    }
+
+    /* Table */
+    .le-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      background: #fff;
+    }
+
+    .le-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 6px 8px;
+      color: #888;
+    }
+
+    .le-table td {
+      padding: 8px 8px;
+      border-bottom: 1px solid #eee;
+      color: #1a1a1a;
+      vertical-align: top;
+    }
+
+    .le-table tr:hover td { background: #f9f9f7; }
+
+    .le-badge {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border: 1px solid;
+      margin-left: 6px;
+    }
+
+    .le-badge-red { color: #a32d2d; border-color: #a32d2d; }
+    .le-badge-gray { color: #999; border-color: #ccc; }
+
+    /* Redacted text */
+    .redacted {
+      background: #1a1a1a;
+      color: #1a1a1a;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: background 0.3s, color 0.3s;
+      user-select: none;
+    }
+
+    .redacted:hover { background: #333; }
+    .redacted.revealed { background: transparent; color: #a32d2d; font-weight: bold; }
+
+    /* Glitch hover text */
+    .glitch-text { display: inline-block; cursor: default; }
+    .glitch-text:hover {
+      animation: glitch 0.25s infinite;
+      color: #a32d2d;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(-2px, 1px); }
+      50% { transform: translate(2px, -1px); }
+      75% { transform: translate(-1px, 2px); }
+    }
+
+    /* Hidden memo */
+    .le-hidden {
+      font-size: 10px;
+      color: #bbb;
+      font-family: 'Courier New', monospace;
+      line-height: 1.8;
+      text-align: center;
+      margin: 1.5rem 0;
+      letter-spacing: 0.5px;
+      cursor: default;
+      transition: all 0.4s;
+    }
+
+    .le-hidden:hover { color: #a32d2d; }
+
+    /* Divider */
+    .le-divider {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 2rem 0;
+    }
+
+    /* About section */
+    .le-about {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 1.5rem 1.8rem;
+      font-size: 13px;
+      line-height: 2;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .le-about p { margin-bottom: 0.8rem; }
+    .le-about p:last-child { margin-bottom: 0; }
+
+    /* Footer */
+    .le-footer {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #999;
+      font-family: 'Courier New', monospace;
+      line-height: 2.2;
+      border-top: 3px double #ccc;
+      padding-top: 1rem;
+    }
+
+    .le-footer .soad-titles {
+      opacity: 0.2;
+      font-size: 9px;
+      margin-top: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .le-hero-title { font-size: 28px; }
+      .le-nav { gap: 1rem; font-size: 10px; }
+      .le-logo { font-size: 20px; letter-spacing: 3px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="le-wrap">
+
+  <!-- Header -->
+  <div class="le-header">
+    <div class="le-logo-box">
+      <div class="le-logo">Luca Enterprise</div>
+    </div>
+    <div class="le-sub">Est. — Classified &nbsp;|&nbsp; Sector: Music / Influence / Noise</div>
+    <div class="le-ticker">LUCA.ENT &nbsp;▲ +∞% &nbsp;|&nbsp; VOL: VERY LOUD &nbsp;|&nbsp; STATUS: OPERATIONAL</div>
+  </div>
+
+  <!-- Nav -->
+  <div class="le-nav">
+    <a>About</a>
+    <a>Licensing</a>
+    <a>Legal</a>
+    <a>Compliance</a>
+    <a>Contact (Unavailable)</a>
+  </div>
+
+  <!-- Hero -->
+  <div class="le-hero">
+    <div class="le-hero-title">We Are<br>Everywhere.</div>
+    <div class="le-hero-sub">A fully registered, totally legitimate music enterprise operating within all known legal frameworks.</div>
+    <div class="le-hero-stamp">Certified Authentic</div>
+    <div class="le-glitch">ERR_SIGNAL_LOST</div>
+  </div>
+
+  <!-- About -->
+  <div class="le-section">
+    <div class="le-section-title">About the Corporation</div>
+    <div class="le-about">
+      <p>Luca Enterprise is a privately held, fully incorporated music entity operating across all known territories and several unknown ones. We specialize in the production, distribution, and legal ownership of <em>sound</em> — including but not limited to: heavy riffs, political statements disguised as choruses, and the uncomfortable silence between tracks.</p>
+      <p>Our corporate philosophy is rooted in the belief that music is not merely an art form, but a <em>binding contractual obligation</em> between artist and listener. By pressing play, you have entered into an agreement with Luca Enterprise. Thank you for your compliance.</p>
+      <p>We are inspired by the great works of human chaos, dissent, and distortion. <span class="glitch-text">Hover here for our mission statement.</span></p>
+    </div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="le-section">
+    <div class="le-section-title">Corporate Metrics — Q3 Report</div>
+    <div class="le-cards">
+      <div class="le-card">
+        <div class="le-card-num">∞</div>
+        <div class="le-card-label">Songs Filed</div>
+        <div class="le-card-note">Number subject to revision</div>
+      </div>
+      <div class="le-card">
+        <div class="le-card-num">0</div>
+        <div class="le-card-label">Complaints Addressed</div>
+        <div class="le-card-note">All complaints are under review</div>
+      </div>
+      <div class="le-card">
+        <div class="le-card-num">17</div>
+        <div class="le-card-label">Active Agreements</div>
+        <div class="le-card-note">None legally binding</div>
+      </div>
+      <div class="le-card">
+        <div class="le-card-num">??</div>
+        <div class="le-card-label">Years of Operation</div>
+        <div class="le-card-note">Records sealed by court order</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- License table -->
+  <div class="le-section">
+    <div class="le-section-title">Licensing & Rights — Document Registry</div>
+    <table class="le-table">
+      <thead>
+        <tr>
+          <th>Document ID</th>
+          <th>Title</th>
+          <th>Filed</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LE-001-α</td>
+          <td>Master Sound Ownership Declaration <span class="le-badge le-badge-red">Classified</span></td>
+          <td>Sometime ago</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>LE-002-β</td>
+          <td>Global Noise Distribution Agreement</td>
+          <td>Later</td>
+          <td>Pending</td>
+        </tr>
+        <tr>
+          <td>LE-003-γ</td>
+          <td>Anti-Silence Compliance Framework <span class="le-badge le-badge-gray">Vol. IV</span></td>
+          <td>—</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>LE-004-δ</td>
+          <td>Unauthorized Listening Prohibition Act</td>
+          <td>Classified</td>
+          <td>Enforced</td>
+        </tr>
+        <tr>
+          <td>LE-005-ε</td>
+          <td>Corporate Screaming License (Renewable)</td>
+          <td>Annually</td>
+          <td>Renewed</td>
+        </tr>
+        <tr>
+          <td>LE-006-ζ</td>
+          <td>Inter-dimensional Riff Patent <span class="le-badge le-badge-red">Eyes Only</span></td>
+          <td>N/A</td>
+          <td>Disputed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="le-divider">
+
+  <!-- Legal -->
+  <div class="le-section">
+    <div class="le-section-title">Terms & Conditions — Binding Legal Notice</div>
+
+    <div class="le-legal-block">
+      <strong>Section 1 — General Terms of Existence</strong>
+      By accessing this website, hearing our music, or thinking about either, you hereby agree to be bound by these Terms in perpetuity, across all timelines, dimensions, and alternate realities in which <em>Luca Enterprise™</em> operates or may operate in the future. Disagreement is noted and <span class="redacted" onclick="this.classList.toggle('revealed')">IGNORED</span>.
+    </div>
+
+    <div class="le-legal-block">
+      <strong>Section 2 — Intellectual Property</strong>
+      All sounds, frequencies, silences between notes, and the general concept of <em>music as vibration</em> are the exclusive intellectual property of Luca Enterprise, registered under filing no. <em>LE-∞</em>. Unauthorized humming of our catalog constitutes infringement. <span class="redacted" onclick="this.classList.toggle('revealed')">We are watching.</span>
+    </div>
+
+    <div class="le-legal-block">
+      <strong>Section 3 — Liability Limitation</strong>
+      Luca Enterprise accepts no liability for: loss of sleep, involuntary headbanging, existential crises triggered by our discography, or any damage to property caused by volume levels described internally as <em>"appropriate."</em> All concerts are attended at the listener's own risk, soul, and sanity.
+    </div>
+
+    <div class="le-legal-block">
+      <strong>Section 4 — User Obligations</strong>
+      The user agrees to: (a) take the music seriously, (b) not take the music too seriously, (c) reconcile these two obligations independently without assistance from Luca Enterprise, and (d) <span class="redacted" onclick="this.classList.toggle('revealed')">WAKE UP.</span> Failure to comply will result in being added to List Ω, the contents and consequences of which are classified.
+    </div>
+
+    <div class="le-warning">
+      This document contains 47 additional clauses which have been omitted for your safety. Requesting access to omitted clauses may result in additional clauses.
+    </div>
+  </div>
+
+  <!-- Hidden memo -->
+  <div class="le-hidden">
+    [INTERNAL MEMO — DO NOT READ] — wake up — the music is the message — BYOB was always about bureaucracy — chop suey was a wellness form — this website is fully compliant — toxicity levels within acceptable range — [END MEMO]
+  </div>
+
+  <!-- Statements -->
+  <div class="le-section">
+    <div class="le-section-title">Official Statements</div>
+
+    <div class="le-legal-block">
+      <strong>Press Release No. 1 — On Our Existence</strong>
+      Luca Enterprise is pleased to confirm that it exists. Further details regarding the nature, purpose, and activities of Luca Enterprise are available upon submission of Form <em>LE-REQUEST-∅</em>, which is not currently available for download.
+    </div>
+
+    <div class="le-legal-block">
+      <strong>Press Release No. 2 — On the Music</strong>
+      The music is real. The feelings it causes are your own responsibility. <span class="glitch-text">Hover here for legal basis.</span> All tracks have been submitted to the relevant authorities. The relevant authorities have not responded. We consider this an endorsement.
+    </div>
+
+    <div class="le-legal-block">
+      <strong>Press Release No. 3 — On Silence</strong>
+      Luca Enterprise does not endorse silence. Silence is the absence of product. Any periods of silence experienced by the listener are considered <em>unlicensed</em> and should be reported to the compliance department at the address that does not exist.
+    </div>
+  </div>
+
+  <hr class="le-divider">
+
+  <!-- Footer -->
+  <div class="le-footer">
+    &copy; Luca Enterprise — All Rights Reserved — All Wrongs Also Reserved<br>
+    Registered in an undisclosed jurisdiction &nbsp;|&nbsp; Document No. LE-SITE-001<br>
+    <span style="opacity:0.5; font-size:9px;">This website is a legally binding instrument. Reading constitutes agreement.</span><br>
+    <div class="soad-titles">BYOB &nbsp;·&nbsp; TOXICITY &nbsp;·&nbsp; AERIALS &nbsp;·&nbsp; CHOP SUEY &nbsp;·&nbsp; SUGAR &nbsp;·&nbsp; HYPNOTIZE &nbsp;·&nbsp; QUESTION! &nbsp;·&nbsp; PRISON SONG</div>
+  </div>
+
+</div>
+
+</body>
+</html>
